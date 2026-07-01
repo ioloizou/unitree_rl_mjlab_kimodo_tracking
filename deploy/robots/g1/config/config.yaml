@@ -12,6 +12,10 @@ FSM:
       id: 5
       type: Mimic
 
+    evade_walk:
+      id: 6
+      type: Mimic
+
 
   Passive:
     transitions: 
@@ -64,9 +68,10 @@ FSM:
 
 
   Velocity:
-    transitions: 
+    transitions:
       Passive: LT + B.on_pressed
       Mimic_Dance1_subject2: RB + A.on_pressed
+      evade_walk: RB + B.on_pressed
 
     policy_dir: config/policy/velocity
 
@@ -80,3 +85,14 @@ FSM:
     policy_dir: config/policy/mimic/dance1_subject2/
     time_start: 0.0
     time_end: 1000.0
+
+
+  evade_walk:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/evade_walk/params/evade_walk.npz
+    policy_dir: config/policy/mimic/evade_walk/
+    time_start: 0.0
+    time_end: 360.0

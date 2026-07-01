@@ -1,5 +1,7 @@
 *.egg-info
 .idea
+mutagen.yml
+__pycache__
 outputs
 logs
 wandb

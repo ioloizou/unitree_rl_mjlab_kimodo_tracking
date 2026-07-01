@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.12)
 project(g1_controller)
 
 set(CMAKE_CXX_STANDARD 17)
+# Force DT_RPATH (not DT_RUNPATH) so /usr/local/lib takes precedence over
+# LD_LIBRARY_PATH when a ROS-sourced environment provides a different
+# CycloneDDS version (0.10.5) that is ABI-incompatible with libddscxx 0.10.2.
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--disable-new-dtags,-rpath,/usr/local/lib")
 
 find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(yaml-cpp REQUIRED)

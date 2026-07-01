@@ -11,6 +11,10 @@ endif()
 
 list(APPEND CMAKE_PREFIX_PATH "/opt/unitree_robotics/lib/cmake")
 find_package(unitree_sdk2 REQUIRED)
+
+# Force DT_RPATH so /opt/unitree_robotics/lib takes precedence over LD_LIBRARY_PATH
+# when a ROS-sourced env provides an ABI-incompatible libddsc (ROS 0.10.5 vs SDK2 0.10.2).
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--disable-new-dtags,-rpath,/opt/unitree_robotics/lib")
 find_package(Boost REQUIRED COMPONENTS program_options)
 
 
