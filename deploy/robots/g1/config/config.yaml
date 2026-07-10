@@ -15,6 +15,10 @@ FSM:
     evade_walk:
       id: 6
       type: Mimic
+    
+    zombie_walk:
+      id: 7
+      type: Mimic
 
 
   Passive:
@@ -72,6 +76,7 @@ FSM:
       Passive: LT + B.on_pressed
       Mimic_Dance1_subject2: RB + A.on_pressed
       evade_walk: RB + B.on_pressed
+      zombie_walk: RB + Y.on_pressed
 
     policy_dir: config/policy/velocity
 
@@ -96,3 +101,13 @@ FSM:
     policy_dir: config/policy/mimic/evade_walk/
     time_start: 0.0
     time_end: 360.0
+
+  zombie_walk:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/zombie_walk/params/zombie_walk.npz
+    policy_dir: config/policy/mimic/zombie_walk/
+    time_start: 0.0
+    time_end: 12.0
