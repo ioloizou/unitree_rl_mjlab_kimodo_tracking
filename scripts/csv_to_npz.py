@@ -61,7 +61,7 @@ class MotionLoader:
     self.motion_base_poss_input = motion[:, :3]
     self.motion_base_rots_input = motion[:, 3:7]
     self.motion_base_rots_input = self.motion_base_rots_input[
-      :, [3, 0, 1, 2]
+      :, [0, 1, 2, 3]
     ]  # convert to wxyz
     self.motion_dof_poss_input = motion[:, 7:]
 
